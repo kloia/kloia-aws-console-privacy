@@ -1,6 +1,6 @@
 # Kloia AWS Console: privacy policy
 
-Last updated: 17 November 2026
+Last updated: 24 November 2026
 
 Kloia AWS Console is a browser extension published by kloia for kloia employees. It opens the
 AWS Management Console for AWS accounts that the signed-in employee is entitled to through
@@ -21,13 +21,29 @@ kloia's AWS IAM Identity Center. It is not available to the public.
 - **Your preferences and the profiles you add yourself** (filter, role choices, appearance,
   custom profiles). They are kept in your browser's synced extension storage. They contain no
   credentials.
+- **Your pinned and recently opened AWS accounts.** Each entry is an AWS account id and a role
+  name. They are stored by kloia's internal hub (below), so the extension and the hub show the
+  same list.
 
 ## Where data goes
 
-The extension sends requests only to Amazon Web Services: AWS IAM Identity Center, AWS STS,
-Amazon S3 (kloia's account catalogue) and the AWS console sign-in service. It does not send
-data to kloia's servers or to any other party, and it contains no analytics, advertising or
-tracking.
+The extension sends requests to two places, and to no other party:
+
+- **Amazon Web Services:** AWS IAM Identity Center, AWS STS, Amazon S3 (kloia's account
+  catalogue) and the AWS console sign-in service.
+- **kloia's internal hub** (hub.kloia.me), operated by kloia for its employees. The extension
+  reads and updates your pinned and recent accounts there, records each console you open
+  (account id and role name), and reads your notices: AWS admin grants that end soon, and
+  whether a newer version of the extension exists. These requests use your own sign-in to the
+  hub. The extension sends the hub no access token, AWS credential or console sign-in link.
+
+The hub's own pages can also ask the extension for your sign-in status and email, the number of
+AWS console sessions you have open, the AWS CLI configuration the extension produces (account
+ids and role names), and to open a console for an account and role. The extension answers only
+pages on kloia's hub, and an answer never contains an access token, AWS credentials or a console
+sign-in link.
+
+The extension contains no analytics, advertising or tracking.
 
 ## What kloia does not do
 
@@ -37,7 +53,9 @@ employee, and does not use it to determine creditworthiness or for lending.
 
 ## Your choices
 
-Signing out in the extension deletes the access token. Removing the extension deletes all of
+Signing out in the extension deletes the access token. In Firefox, you can withhold the
+extension's access to the hub: it then makes no hub requests, and the hub's pages cannot reach
+it. Removing the extension deletes all of
 its data from the browser. Access to AWS accounts itself is managed by kloia's access process,
 not by this extension.
 
